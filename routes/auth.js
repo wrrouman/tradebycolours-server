@@ -44,14 +44,17 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: process.env.CLIENT_URL,
+    successRedirect:
+      process.env.CLIENT_URL || "https://tradebycolours.herokuapp.com/",
     failureRedirect: "/auth/login/failed",
   })
 );
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(process.env.CLIENT_URL);
+  res.redirect(
+    process.env.CLIENT_URL || "https://tradebycolours.herokuapp.com/"
+  );
 });
 
 module.exports = router;
