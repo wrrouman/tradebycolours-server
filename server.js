@@ -20,7 +20,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -29,4 +29,7 @@ app.use(
 app.use("/auth", authRoute);
 
 const port = process.env.PORT || 8080;
+
+console.log("My PORT", port);
+
 app.listen(port, () => console.log(`Listenting on port ${port}...`));
