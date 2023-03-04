@@ -45,7 +45,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     successRedirect:
-      process.env.CLIENT_URL || "https://tradebycolours.herokuapp.com/",
+      process.env.CLIENT_URL || "https://tradebycolours.herokuapp.com",
     failureRedirect: "/auth/login/failed",
   })
 );
@@ -53,7 +53,7 @@ router.get(
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect(
-    process.env.CLIENT_URL || "https://tradebycolours.herokuapp.com/"
+    process.env.CLIENT_URL || "https://tradebycolours.herokuapp.com"
   );
 });
 
