@@ -18,26 +18,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.all("*", function (req, res, next) {
-  const origin = cors.origin.includes(req.header("origin").toLowerCase())
-    ? req.headers.origin
-    : cors.default;
-  res.header("Access-Control-Allow-Origin", origin);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Credentials", true); // add this line to allow credentials
-  next();
-});
-
-app.use(
-  cors({
-    origin: ["https://tradebycolours.herokuapp.com", "http://localhost:3000"],
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use("/auth", authRoute);
 
