@@ -20,7 +20,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://tradebycolours.herokuapp.com",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
